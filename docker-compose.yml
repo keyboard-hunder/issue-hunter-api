@@ -1,0 +1,29 @@
+version: '2.2'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=Todo
+    ports:
+      - "5000:3306"
+    command: [mysqld, --character-set-server=utf8, --collation-server=utf8_general_ci]
+  web:
+    build: .
+    restart: always
+    command: [
+      "dockerize",
+      "-wait", "tcp://db:3306",
+      "-timeout", "3m",
+      "npm", "start"
+    ]
+    ports:
+      - "8000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - db
+  
