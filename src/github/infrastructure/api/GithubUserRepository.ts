@@ -1,9 +1,11 @@
 import axios from 'axios';
+import { Injectable } from '@nestjs/common';
 
 import { IGitHubUserRepositoty } from '../../domain/GithubUserRepository.interface';
 import { GitHubUser } from '../../domain/GithubUser';
 import { ConfigService } from '../../../config/application/Config.service';
 
+@Injectable()
 export class GitHubUserRepository implements IGitHubUserRepositoty {
 
   constructor(
