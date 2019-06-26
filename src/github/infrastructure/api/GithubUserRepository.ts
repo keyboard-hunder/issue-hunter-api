@@ -23,14 +23,13 @@ export class GitHubUserRepository implements IGitHubUserRepositoty {
       headers: { accept: 'application/json' },
     });
 
-    const { data } = await axios({
+    const { data: { id, name, email, avatar_url: avatarUrl } } = await axios({
       method: 'get',
       url: 'https://api.github.com/user',
       headers: { Authorization: `token ${access_token}` },
     });
-    console.log(data);
 
-    return new GitHubUser();
+    return new GitHubUser(id, name, email, avatarUrl);
   }
 
 }
