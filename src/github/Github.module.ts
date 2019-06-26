@@ -10,4 +10,4 @@ import { GitHubUserRepository } from './infrastructure/api/GithubUserRepository'
   }],
   exports: [GIT_HUB_USER_REPOSITORY_TOKEN],
 })
-export class ConfigModule {}
+export class GithubModule {}
