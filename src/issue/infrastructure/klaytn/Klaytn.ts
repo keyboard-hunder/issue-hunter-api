@@ -37,10 +37,13 @@ export class Klaytn implements IKlaytn {
       profileImageUrl,
     );
 
-    return issue.send({
+    await issue.send({
       from: this.account.address,
       gas: this.configService.getKlaytnConfig().gasLimit,
     });
+
+    return this.contract.methods.newId().call();
+
   }
 
   private async getAddress(userId: number) {
