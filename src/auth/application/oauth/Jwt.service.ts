@@ -4,6 +4,12 @@ import * as jwt from 'jsonwebtoken';
 import { User } from '../../../user/domain/user/User';
 import { ConfigService } from '../../../config/application/Config.service';
 
+export interface SignInformation {
+  id: number;
+  name: string;
+  email: string;
+}
+
 @Injectable()
 export class JwtService {
 
@@ -12,7 +18,7 @@ export class JwtService {
   ) {}
 
   getTokenByUser(user: User): string {
-    const signInformation = {
+    const signInformation: SignInformation = {
       id: user.id.id,
       name: user.name,
       email: user.email,
@@ -23,6 +29,13 @@ export class JwtService {
       audience: 'issue-hunter',
       issuer: 'issue-hunter',
     });
+  }
+
+  getSignInformationByToken(token: string): SignInformation {
+    return jwt.verify(token, this.configService.getJwtSecret(), {
+      audience: 'issue-hunter',
+      issuer: 'issue-hunter',
+    }) as SignInformation;
   }
 
 }
