@@ -39,4 +39,31 @@ export class GithubIssueRepository implements IGithubIssueRepository {
     )) as GithubIssue[];
   }
 
+  async closeIssue(
+    repositoryFullName: string,
+    issueNumber: number,
+    accessToken: string,
+  ): Promise<void> {
+    await axios({
+      method: 'patch',
+      url: `https://api.github.com/repos/${repositoryFullName}/issues/${issueNumber}`,
+      headers: { Authorization: `token ${accessToken}` },
+      data: { state: 'closed' },
+    });
+  }
+
+  async addComment(
+    repositoryFullName: string,
+    issueNumber: number,
+    comment: string,
+    accessToken: string,
+  ): Promise<void> {
+    await axios({
+      method: 'post',
+      url: `https://api.github.com/repos/${repositoryFullName}/issues/${issueNumber}/comments`,
+      headers: { Authorization: `token ${accessToken}` },
+      data: { body: comment },
+    });
+  }
+
 }
