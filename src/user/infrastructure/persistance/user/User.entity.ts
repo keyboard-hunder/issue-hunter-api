@@ -15,4 +15,13 @@ export class UserEntity {
   @Column()
   avatarUrl: string;
 
+  @Column()
+  accessToken: string;
+
+  @Column()
+  createdAt: Date;
+
+  @Column()
+  updatedAt: Date;
+
 }

@@ -12,12 +12,16 @@ export class UserFactory {
     name: string,
     email: string,
     avatarUrl: string,
+    accessToken: string,
   ): User {
     return new User(
       userId,
       name,
       email,
       avatarUrl,
+      accessToken,
+      new Date(),
+      new Date(),
     );
   }
 
@@ -27,6 +31,9 @@ export class UserFactory {
       githubUser.name,
       githubUser.email,
       githubUser.avatarUrl,
+      githubUser.accessToken,
+      new Date(),
+      new Date(),
     );
   }
 
@@ -35,12 +42,18 @@ export class UserFactory {
     name: string,
     email: string,
     avatarUrl: string,
+    accessToken: string,
+    createdAt: Date,
+    updatedAt: Date,
   ): User {
     return new User(
       new UserId(userId),
       name,
       email,
       avatarUrl,
+      accessToken,
+      createdAt,
+      updatedAt,
     );
   }
 

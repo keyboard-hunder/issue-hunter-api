@@ -16,6 +16,9 @@ export class UserMapper {
       entity.name,
       entity.email,
       entity.avatarUrl,
+      entity.accessToken,
+      entity.createdAt,
+      entity.updatedAt,
     );
   }
 
@@ -26,6 +29,9 @@ export class UserMapper {
     entity.name = plainUser._name;
     entity.email = plainUser._email;
     entity.avatarUrl = plainUser._avatarUrl;
+    entity.accessToken = plainUser._accessToken;
+    entity.createdAt = plainUser._createdAt;
+    entity.updatedAt = plainUser._updatedAt;
     return entity;
   }
 
