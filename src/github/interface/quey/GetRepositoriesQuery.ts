@@ -1,8 +1,9 @@
-import { IsNumber } from 'class-validator';
+import { IsNumber, IsString, IsNotEmpty } from 'class-validator';
 
 export class GetRepositoriesQuery {
 
-  @IsNumber()
-  page: number;
+  @IsString()
+  @IsNotEmpty()
+  page: string;
 
 }

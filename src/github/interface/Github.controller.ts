@@ -21,7 +21,7 @@ export class GithubController {
     const { page } = getRepositoriesQuery;
     const repositories = await this.githubRepositoryService.getRepositories(
       '07bfe49916f5f5f8a7288d2e9802ce5c298db864',
-      page,
+      parseInt(page, 10),
     );
     return { message: 'repositories received', result: { repositories } };
   }
@@ -31,7 +31,10 @@ export class GithubController {
     @Query() getIssuesQuery: GetIssuesQuery,
   ) {
     const { repositoryFullName, page } = getIssuesQuery;
-    const issues = await this.githubIssueService.getIssuesByRepository(repositoryFullName, page);
+    const issues = await this.githubIssueService.getIssuesByRepository(
+      repositoryFullName,
+      parseInt(page, 10),
+    );
     return { message: 'issues received', result: { issues } };
   }
 

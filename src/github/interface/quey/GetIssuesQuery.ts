@@ -6,7 +6,8 @@ export class GetIssuesQuery {
   @IsNotEmpty()
   repositoryFullName: string;
 
-  @IsNumber()
-  page: number;
+  @IsString()
+  @IsNotEmpty()
+  page: string;
 
 }
