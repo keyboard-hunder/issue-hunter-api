@@ -35,6 +35,7 @@ export class IssueService {
     klaytnPrice: number,
     category: string,
     avatarUrl: string,
+    accessToken: string,
   ): Promise<void> {
     // get issue`s github information
     const repositoryUrl = this.githubHelperService.getRepositoryUrl(repositoryFullName);
@@ -71,8 +72,16 @@ export class IssueService {
       ),
       userId,
     );
-
     await this.issueRepository.save(newIssue);
+
+    // add comment to github`s issue
+    const comment = 'comment';
+    await this.githubIssueRepository.addComment(
+      repositoryFullName,
+      issueNumber,
+      comment,
+      accessToken,
+    );
   }
 
 }
