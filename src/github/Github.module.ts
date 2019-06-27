@@ -9,6 +9,7 @@ import { GithubRepositoryService } from './application/GithubRepository.service'
 import { GITHUB_ISSUE_REPOSITORY_TOKEN } from './domain/GithubIssueRepository.interface';
 import { GithubIssueRepository } from './infrastructure/api/GithubIssueRepository';
 import { GithubIssueService } from './application/GithubIssue.service';
+import { GithubHelperService } from './application/GithubHelper.service';
 
 @Module({
   providers: [{
@@ -20,7 +21,7 @@ import { GithubIssueService } from './application/GithubIssue.service';
   }, {
     provide: GITHUB_ISSUE_REPOSITORY_TOKEN,
     useClass: GithubIssueRepository,
-  }, GithubRepositoryService, GithubIssueService],
+  }, GithubRepositoryService, GithubIssueService, GithubHelperService],
   controllers: [GithubController],
   exports: [GIT_HUB_USER_REPOSITORY_TOKEN],
 })
