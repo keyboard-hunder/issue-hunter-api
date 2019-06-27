@@ -1,7 +1,7 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Body, Post } from '@nestjs/common';
 
-import { OauthGithubQuery } from './query/OauthGithubQuery';
 import { OauthService } from '../application/oauth/Oauth.service';
+import { OauthGithubBody } from './body/OauthGithubBody';
 
 @Controller('/login')
 export class AuthController {
@@ -10,11 +10,11 @@ export class AuthController {
     private readonly oauthService: OauthService,
   ) {}
 
-  @Get('/oauth/github')
+  @Post('/oauth/github')
   async oauthGithub(
-    @Query() query: OauthGithubQuery,
+    @Body() body: OauthGithubBody,
   ) {
-    const { code } = query;
+    const { code } = body;
     const jwtToken = await this.oauthService.oauthGithub(code);
     return { message: 'github oauth login successed', result: { token: jwtToken } };
   }
