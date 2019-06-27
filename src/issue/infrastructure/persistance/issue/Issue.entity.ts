@@ -36,4 +36,7 @@ export class IssueEntity {
   @Column()
   updatedAt: Date;
 
+  @Column()
+  userId: number;
+
 }

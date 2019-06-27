@@ -12,6 +12,7 @@ export class Issue extends Entity<Issue, IssueId> {
   private _klaytnInformation: KlaytnInformation;
   private _createdAt: Date;
   private _updatedAt: Date;
+  private _userId: number;
 
   constructor(
     id: IssueId,
@@ -21,6 +22,7 @@ export class Issue extends Entity<Issue, IssueId> {
     klaytnInformation: KlaytnInformation,
     createdAt: Date,
     updatedAt: Date,
+    userId: number,
   ) {
     super(id);
     this._state = state;
@@ -29,6 +31,7 @@ export class Issue extends Entity<Issue, IssueId> {
     this._klaytnInformation = klaytnInformation;
     this._createdAt = createdAt;
     this._updatedAt = updatedAt;
+    this._userId = userId;
   }
 
   get state() {
@@ -45,6 +48,14 @@ export class Issue extends Entity<Issue, IssueId> {
 
   get klaytnInformation() {
     return this._klaytnInformation;
+  }
+
+  get userId() {
+    return this.userId;
+  }
+
+  public changeState(state: string): void {
+    this._state = state;
   }
 
 }

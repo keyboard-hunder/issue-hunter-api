@@ -13,6 +13,7 @@ export class IssueFactory {
     category: string,
     githubInformation: GithubInformation,
     klaytnInformation: KlaytnInformation,
+    userId: number,
   ): Issue {
     return new Issue(
       id,
@@ -22,6 +23,7 @@ export class IssueFactory {
       klaytnInformation,
       new Date(),
       new Date(),
+      userId,
     );
   }
 
@@ -37,6 +39,7 @@ export class IssueFactory {
     klaytnPrice: number,
     createdAt: Date,
     updatedAt: Date,
+    userId: number,
   ): Issue {
     return new Issue(
       new IssueId(id),
@@ -55,6 +58,7 @@ export class IssueFactory {
       ),
       createdAt,
       updatedAt,
+      userId,
     );
   }
 

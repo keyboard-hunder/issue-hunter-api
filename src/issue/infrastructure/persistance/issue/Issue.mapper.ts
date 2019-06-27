@@ -23,6 +23,7 @@ export class IssueMapper {
       entity.klaytnPrice,
       entity.createdAt,
       entity.updatedAt,
+      entity.userId,
     );
   }
 
@@ -40,6 +41,7 @@ export class IssueMapper {
     entity.klaytnPrice = plainIssue._klaytnInformation._price;
     entity.createdAt = plainIssue._createdAt;
     entity.updatedAt = plainIssue._updatedAt;
+    entity.userId = plainIssue._userId;
     return entity;
   }
 
