@@ -20,4 +20,16 @@ export class User extends Entity<User, UserId> {
     this._avatarUrl = avatarUrl;
   }
 
+  get name() {
+    return this._name;
+  }
+
+  get email() {
+    return this._email;
+  }
+
+  get avatarUrl() {
+    return this._avatarUrl;
+  }
+
 }

@@ -29,4 +29,8 @@ export class ConfigService {
     };
   }
 
+  public getJwtSecret(): string {
+    return this.processEnv.getString('JWT_SECRET');
+  }
+
 }

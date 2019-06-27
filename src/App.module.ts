@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ConfigModule } from './config/Config.module';
+import { AuthModule } from './auth/Auth.module';
 import { ConfigService } from './config/application/Config.service';
 
 @Module({

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import { User } from './User';
 import { UserId } from './UserId';
+import { GitHubUser } from '../../../github/domain/GithubUser';
 
 @Injectable()
 export class UserFactory {
@@ -14,6 +15,16 @@ export class UserFactory {
   ): User {
     return new User(
       userId,
+      name,
+      email,
+      avatarUrl,
+    );
+  }
+
+  public createByGitHubUser(githubUser: GitHubUser): User {
+    const { id, email, name, avatarUrl } = githubUser;
+    return new User(
+      new UserId(id),
       name,
       email,
       avatarUrl,
