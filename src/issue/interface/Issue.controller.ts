@@ -24,6 +24,7 @@ export class IssueController {
       issueNumber,
       klaytnPrice,
       category,
+      request.user.avatarUrl,
     );
     return { message: 'issue created' };
   }

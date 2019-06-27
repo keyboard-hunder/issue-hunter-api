@@ -34,6 +34,7 @@ export class IssueService {
     issueNumber: number,
     klaytnPrice: number,
     category: string,
+    avatarUrl: string,
   ): Promise<void> {
     // get issue`s github information
     const repositoryUrl = this.githubHelperService.getRepositoryUrl(repositoryFullName);
@@ -50,7 +51,7 @@ export class IssueService {
       githubIssue.title,
       category,
       klaytnPrice,
-      '',
+      avatarUrl,
     );
 
     // create issue

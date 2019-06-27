@@ -1,4 +1,5 @@
-import { Controller, Get, UseGuards, Req, Inject, Query } from '@nestjs/common';
+import { Controller, Get, UseGuards, Req, Query } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
 import { GithubRepositoryService } from '../application/GithubRepository.service';
 import { GetIssuesQuery } from './quey/GetIssuesQuery';
@@ -14,13 +15,14 @@ export class GithubController {
   ) {}
 
   @Get('/repositories')
+  @UseGuards(AuthGuard('bearer'))
   async getRepositories(
     @Req() request,
     @Query() getRepositoriesQuery: GetRepositoriesQuery,
   ) {
     const { page } = getRepositoriesQuery;
     const repositories = await this.githubRepositoryService.getRepositories(
-      '07bfe49916f5f5f8a7288d2e9802ce5c298db864',
+      request.user.accessToken,
       parseInt(page, 10),
     );
     return { message: 'repositories received', result: { repositories } };
