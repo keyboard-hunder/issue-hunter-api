@@ -26,7 +26,6 @@ export class UserMapper {
     entity.name = plainUser._name;
     entity.email = plainUser._email;
     entity.avatarUrl = plainUser._avatarUrl;
-
     return entity;
   }
 

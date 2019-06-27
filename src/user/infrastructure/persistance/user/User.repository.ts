@@ -1,4 +1,3 @@
-import { Repository } from '@modusign/ddd';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository as OrmRepository } from 'typeorm';

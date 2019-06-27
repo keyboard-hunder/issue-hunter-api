@@ -30,7 +30,6 @@ export class OauthService {
     const user = await this.userRepository.findById(new UserId(gitHubUser.id));
 
     if (user === null) {
-      // signup
       const newUser = this.userFactory.createByGitHubUser(gitHubUser);
       await this.userRepository.save(newUser);
       return this.jwtService.getTokenByUser(newUser);

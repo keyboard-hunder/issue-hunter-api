@@ -22,12 +22,11 @@ export class UserFactory {
   }
 
   public createByGitHubUser(githubUser: GitHubUser): User {
-    const { id, email, name, avatarUrl } = githubUser;
     return new User(
-      new UserId(id),
-      name,
-      email,
-      avatarUrl,
+      new UserId(githubUser.id),
+      githubUser.name,
+      githubUser.email,
+      githubUser.avatarUrl,
     );
   }
 

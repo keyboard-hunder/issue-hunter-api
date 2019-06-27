@@ -6,6 +6,7 @@ export class UserId extends Identity<UserId> {
 
   constructor(id: number) {
     super();
+    this._id = id;
   }
 
   get id() {
