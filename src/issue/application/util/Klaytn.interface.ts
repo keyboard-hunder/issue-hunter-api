@@ -6,7 +6,7 @@ export interface IKlaytn {
     repositoryUrl: string,
     issueNumber: number,
     title: string,
-    tags: string,
+    category: string,
     price: number,
   ): Promise<number>;
 }

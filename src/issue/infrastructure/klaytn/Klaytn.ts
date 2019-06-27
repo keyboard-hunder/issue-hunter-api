@@ -22,7 +22,7 @@ export class Klaytn implements IKlaytn {
     repositoryUrl: string,
     issueNumber: number,
     title: string,
-    tags: string,
+    category: string,
     price: number,
   ): Promise<number> {
     const address = await this.getAddress(userId);
@@ -31,7 +31,7 @@ export class Klaytn implements IKlaytn {
       repositoryUrl,
       issueNumber,
       title,
-      tags,
+      category,
       price,
     );
 
