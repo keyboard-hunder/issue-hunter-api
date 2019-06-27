@@ -11,10 +11,12 @@ import { Klaytn } from './infrastructure/klaytn/Klaytn';
 import { GithubModule } from '../github/Github.module';
 import { IssueService } from './application/Issue.service';
 import { IssueController } from './interface/Issue.controller';
+import { UserModule } from '../user/User.module';
+import { HookService } from './application/Hook.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([IssueEntity]), GithubModule],
-  providers: [IssueFactory, IssueMapper, IssueService, {
+  imports: [TypeOrmModule.forFeature([IssueEntity]), GithubModule, UserModule],
+  providers: [IssueFactory, IssueMapper, IssueService, HookService, {
     provide: ISSUE_REPOSITORY_TOKEN,
     useClass: IssueRepository,
   }, {

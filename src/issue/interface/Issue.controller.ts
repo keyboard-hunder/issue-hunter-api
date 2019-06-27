@@ -3,12 +3,15 @@ import { AuthGuard } from '@nestjs/passport';
 
 import { IssueService } from '../application/Issue.service';
 import { CreateIssueDTO } from './dto/CreateIssueDTO';
+import { HookService } from '../application/Hook.service';
+import { HandlePullRequestHookDTO } from './dto/HandlePullRequestHookDTO';
 
 @Controller('/issues')
 export class IssueController {
 
   constructor(
     private readonly issueService: IssueService,
+    private readonly hookService: HookService,
   ) {}
 
   @Post('/')
@@ -28,4 +31,24 @@ export class IssueController {
     );
     return { message: 'issue created' };
   }
+
+  @Post('/github/hook/pr')
+  async handlePullRequestHook(
+    @Body() handlePullRequestHookDTO: HandlePullRequestHookDTO,
+  ) {
+    const pullRequest = handlePullRequestHookDTO['pull_request'];
+    const { state, merged, body, repo, user } = pullRequest;
+    const repoFullName = repo['full_name'];
+    const solvingGithubId = user.id;
+
+    await this.hookService.handlePullRequestHook(
+      state,
+      merged,
+      body,
+      repoFullName,
+      solvingGithubId,
+    );
+    return { message: 'pull request hook handled' };
+  }
+
 }

@@ -69,6 +69,7 @@ export class IssueService {
         newKlaytnId,
         klaytnPrice,
       ),
+      userId,
     );
 
     await this.issueRepository.save(newIssue);

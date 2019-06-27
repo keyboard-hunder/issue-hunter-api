@@ -34,23 +34,23 @@ export class Issue extends Entity<Issue, IssueId> {
     this._userId = userId;
   }
 
-  get state() {
+  get state(): string {
     return this._state;
   }
 
-  get category() {
+  get category(): string {
     return this._category;
   }
 
-  get githubInformation() {
+  get githubInformation(): GithubInformation {
     return this._githubInformation;
   }
 
-  get klaytnInformation() {
+  get klaytnInformation(): KlaytnInformation {
     return this._klaytnInformation;
   }
 
-  get userId() {
+  get userId(): number {
     return this.userId;
   }
 
