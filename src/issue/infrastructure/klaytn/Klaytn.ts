@@ -46,7 +46,12 @@ export class Klaytn implements IKlaytn {
 
   }
 
-  private async getAddress(userId: number) {
+  public async solveIssue(githubId: number, klaytnId: number) {
+    const address = await this.getAddress(githubId);
+    await this.contract.methods.solve(klaytnId.toString(), address).call();
+  }
+
+  private async getAddress(userId: number): Promise<string> {
     const { contractAddress } = this.configService.getKlaytnConfig();
     return this.contract.methods
       .githubToAddress(userId.toString())
