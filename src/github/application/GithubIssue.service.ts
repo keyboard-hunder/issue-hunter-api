@@ -13,8 +13,8 @@ export class GithubIssueService {
     private readonly githubIssueRepository: IGithubIssueRepository,
   ) {}
 
-  async getIssuesByRepository(repositoryFullName: string): Promise<object[]> {
-    const issues = await this.githubIssueRepository.findByRepository(repositoryFullName);
+  async getIssuesByRepository(repositoryFullName: string, page: number): Promise<object[]> {
+    const issues = await this.githubIssueRepository.findByRepository(repositoryFullName, page);
     return issues.map(issue => ({
       id: issue.id,
       num: issue.num,

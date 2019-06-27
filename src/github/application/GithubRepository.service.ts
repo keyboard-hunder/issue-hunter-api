@@ -13,8 +13,8 @@ export class GithubRepositoryService {
     private readonly githubRepositoryRepository: IRepositoryRepositoty,
   ) {}
 
-  async getRepositories(token: string): Promise<object[]> {
-    const repositories = await this.githubRepositoryRepository.findByUser(token);
+  async getRepositories(token: string, page: number): Promise<object[]> {
+    const repositories = await this.githubRepositoryRepository.findByUser(token, page);
     return repositories.map(repository => ({
       id: repository.id,
       name: repository.name,

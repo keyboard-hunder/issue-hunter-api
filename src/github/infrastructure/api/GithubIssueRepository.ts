@@ -23,10 +23,10 @@ export class GithubIssueRepository implements IGithubIssueRepository {
     );
   }
 
-  async findByRepository(repositoryFullName: string): Promise<GithubIssue[]> {
+  async findByRepository(repositoryFullName: string, page: number): Promise<GithubIssue[]> {
     const { data: issues } = await axios({
       method: 'get',
-      url: `https://api.github.com/repos/${repositoryFullName}/issues?state=open`,
+      url: `https://api.github.com/repos/${repositoryFullName}/issues?state=open&page=${page}`,
     });
 
     return issues.map(issue => new GithubIssue(

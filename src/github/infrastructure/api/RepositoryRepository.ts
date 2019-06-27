@@ -7,10 +7,10 @@ import { GithubRepository } from '../../domain/GithubRepository';
 @Injectable()
 export class GithubRepositoryRepository implements IRepositoryRepositoty {
 
-  async findByUser(token: string): Promise<GithubRepository[]> {
+  async findByUser(token: string, page: number): Promise<GithubRepository[]> {
     const { data: repositories } = await axios({
       method: 'get',
-      url: 'https://api.github.com/user/repos?visibility=public',
+      url: `https://api.github.com/user/repos?visibility=public&page=${page}`,
       headers: { Authorization: `token ${token}` },
     });
 

@@ -3,6 +3,7 @@ import { Controller, Get, UseGuards, Req, Inject, Query } from '@nestjs/common';
 import { GithubRepositoryService } from '../application/GithubRepository.service';
 import { GetIssuesQuery } from './quey/GetIssuesQuery';
 import { GithubIssueService } from '../application/GithubIssue.service';
+import { GetRepositoriesQuery } from './quey/GetRepositoriesQuery';
 
 @Controller('/github')
 export class GithubController {
@@ -15,9 +16,12 @@ export class GithubController {
   @Get('/repositories')
   async getRepositories(
     @Req() request,
+    @Query() getRepositoriesQuery: GetRepositoriesQuery,
   ) {
+    const { page } = getRepositoriesQuery;
     const repositories = await this.githubRepositoryService.getRepositories(
       '07bfe49916f5f5f8a7288d2e9802ce5c298db864',
+      page,
     );
     return { message: 'repositories received', result: { repositories } };
   }
@@ -26,8 +30,8 @@ export class GithubController {
   async getIssues(
     @Query() getIssuesQuery: GetIssuesQuery,
   ) {
-    const { repositoryFullName } = getIssuesQuery;
-    const issues = await this.githubIssueService.getIssuesByRepository(repositoryFullName);
+    const { repositoryFullName, page } = getIssuesQuery;
+    const issues = await this.githubIssueService.getIssuesByRepository(repositoryFullName, page);
     return { message: 'issues received', result: { issues } };
   }
 
