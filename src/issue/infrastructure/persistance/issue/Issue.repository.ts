@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository as OrmRepository } from 'typeorm';
 
-import { IIssueRepository } from '../../../domain/issue/IssueRepository.interface';
+import { IIssueRepository, SearchParam } from '../../../domain/issue/IssueRepository.interface';
 import { IssueMapper } from './Issue.mapper';
 import { IssueEntity } from './Issue.entity';
 import { IssueId } from '../../../domain/issue/IssueId';
@@ -35,6 +35,15 @@ export class IssueRepository implements IIssueRepository {
     if (issueEntity === undefined) return null;
 
     return this.mapper.toDomain(issueEntity);
+  }
+
+  async findBySearchParam(param: SearchParam): Promise<Issue[]> {
+    const { page } = param;
+    const issueEntities = await this.ormRepository.find({
+      skip: (page - 1) * 30,
+      take: 30,
+    });
+    return issueEntities.map(issueEntity => this.mapper.toDomain(issueEntity));
   }
 
   async save(issue: Issue): Promise<void> {
