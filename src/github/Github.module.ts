@@ -23,6 +23,10 @@ import { GithubHelperService } from './application/GithubHelper.service';
     useClass: GithubIssueRepository,
   }, GithubRepositoryService, GithubIssueService, GithubHelperService],
   controllers: [GithubController],
-  exports: [GIT_HUB_USER_REPOSITORY_TOKEN],
+  exports: [
+    GIT_HUB_USER_REPOSITORY_TOKEN,
+    GITHUB_ISSUE_REPOSITORY_TOKEN,
+    GithubHelperService,
+  ],
 })
 export class GithubModule {}

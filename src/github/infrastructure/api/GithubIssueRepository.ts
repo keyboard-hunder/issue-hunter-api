@@ -7,6 +7,22 @@ import { GithubIssue } from '../../domain/GithubIssue';
 @Injectable()
 export class GithubIssueRepository implements IGithubIssueRepository {
 
+  async findByIssueNumber(repositoryFullName: string, issueNumber: number) {
+    const { data: { id, number, repository_url, state, title, body } } = await axios({
+      method: 'get',
+      url: `https://api.github.com/repos/${repositoryFullName}/issues/${issueNumber}`,
+    });
+
+    return new GithubIssue(
+      id,
+      number,
+      repository_url,
+      state,
+      title,
+      body,
+    );
+  }
+
   async findByRepository(repositoryFullName: string): Promise<GithubIssue[]> {
     const { data: issues } = await axios({
       method: 'get',
