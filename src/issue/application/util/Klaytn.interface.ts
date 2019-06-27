@@ -8,5 +8,6 @@ export interface IKlaytn {
     title: string,
     category: string,
     price: number,
+    profileImageUrl: string,
   ): Promise<number>;
 }

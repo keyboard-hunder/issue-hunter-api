@@ -50,6 +50,7 @@ export class IssueService {
       githubIssue.title,
       category,
       klaytnPrice,
+      '',
     );
 
     // create issue

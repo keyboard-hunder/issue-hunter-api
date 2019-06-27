@@ -24,6 +24,7 @@ export class Klaytn implements IKlaytn {
     title: string,
     category: string,
     price: number,
+    profileImageUrl: string,
   ): Promise<number> {
     const address = await this.getAddress(userId);
     const issue = this.contract.methods.makeIssue(
@@ -33,6 +34,7 @@ export class Klaytn implements IKlaytn {
       title,
       category,
       price,
+      profileImageUrl,
     );
 
     return issue.send({
