@@ -19,7 +19,7 @@ export class IssueController {
   ) {
     const { repositoryFullName, klaytnPrice, category, issueNumber } = createIssueDTO;
     await this.issueService.createIssue(
-      request.user.id,
+      request.user.id.id,
       repositoryFullName,
       issueNumber,
       klaytnPrice,
