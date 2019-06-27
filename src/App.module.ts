@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from './config/Config.module';
 import { AuthModule } from './auth/Auth.module';
 import { ConfigService } from './config/application/Config.service';
+import { GithubModule } from './github/Github.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ConfigService } from './config/application/Config.service';
     }),
     ConfigModule,
     AuthModule,
+    GithubModule,
   ],
 })
 
