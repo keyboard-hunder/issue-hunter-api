@@ -16,4 +16,17 @@ export class ConfigService {
     };
   }
 
+  public getTypeormConfig(): object {
+    return {
+      type: 'mysql' as 'mysql',
+      host: this.processEnv.getString('MYSQL_HOST'),
+      port: this.processEnv.getNumber('MYSQL_PORT'),
+      username: this.processEnv.getString('MYSQL_USER'),
+      password: this.processEnv.getString('MYSQL_PASSWORD'),
+      database: this.processEnv.getString('MYSQL_DATABASE'),
+      entities: [`${this.processEnv.getString('PWD')}/**/*.entity{.ts,.js}`],
+      synchronize: this.processEnv.getBoolean('ORM_SYNC'),
+    };
+  }
+
 }
