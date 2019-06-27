@@ -33,4 +33,18 @@ export class ConfigService {
     return this.processEnv.getString('JWT_SECRET');
   }
 
+  public getKlaytnConfig(): {
+    url: string,
+    contractAddress: string,
+    privateKey: string,
+    gasLimit: number,
+  } {
+    return {
+      url: this.processEnv.getString('KLAYTN_URL'),
+      contractAddress: this.processEnv.getString('KLAYTN_CONTRACT_ADDRESS'),
+      privateKey: this.processEnv.getString('KLAYTN_PRIVATE_KEY'),
+      gasLimit: this.processEnv.getNumber('KLAYTN_GAS_LIMIT'),
+    };
+  }
+
 }
