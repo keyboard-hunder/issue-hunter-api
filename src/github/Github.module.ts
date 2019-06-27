@@ -14,6 +14,7 @@ import { GITHUB_HOOK_REPOSITORY_TOKEN } from './domain/GithubHookRepository.inte
 import { GithubHookRepository } from './infrastructure/api/GithubHookRepository';
 
 @Module({
+  imports: [],
   providers: [{
     provide: GIT_HUB_USER_REPOSITORY_TOKEN,
     useClass: GitHubUserRepository,
@@ -26,7 +27,11 @@ import { GithubHookRepository } from './infrastructure/api/GithubHookRepository'
   }, {
     provide: GITHUB_HOOK_REPOSITORY_TOKEN,
     useClass: GithubHookRepository,
-  }, GithubRepositoryService, GithubIssueService, GithubHelperService],
+  },
+    GithubRepositoryService,
+    GithubIssueService,
+    GithubHelperService,
+  ],
   controllers: [GithubController],
   exports: [
     GIT_HUB_USER_REPOSITORY_TOKEN,
