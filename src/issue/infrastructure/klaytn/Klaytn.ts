@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import * as Caver from 'caver-js';
+import Caver from 'caver-js'; // tslint:disable-line:import-name
 
 import { ConfigService } from '../../../config/application/Config.service';
 import abi from  './abi.json'; // tslint:disable-line:import-name
