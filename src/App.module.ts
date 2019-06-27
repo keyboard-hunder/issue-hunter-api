@@ -5,6 +5,7 @@ import { ConfigModule } from './config/Config.module';
 import { AuthModule } from './auth/Auth.module';
 import { ConfigService } from './config/application/Config.service';
 import { GithubModule } from './github/Github.module';
+import { IssueModule } from './issue/Issue.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { GithubModule } from './github/Github.module';
     ConfigModule,
     AuthModule,
     GithubModule,
+    IssueModule,
   ],
 })
 
