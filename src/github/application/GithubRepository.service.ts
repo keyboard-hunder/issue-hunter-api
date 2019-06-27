@@ -4,7 +4,6 @@ import {
   IRepositoryRepositoty,
   GITHUB_REPOSITORY_REPOSITORY_TOKEN,
 } from '../domain/GithubRepositoryRepository.interface';
-import { GithubRepository } from '../domain/GithubRepository';
 
 @Injectable()
 export class GithubRepositoryService {

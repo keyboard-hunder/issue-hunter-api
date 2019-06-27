@@ -6,6 +6,9 @@ import { GITHUB_REPOSITORY_REPOSITORY_TOKEN } from './domain/GithubRepositoryRep
 import { GithubRepositoryRepository } from './infrastructure/api/RepositoryRepository';
 import { GithubController } from './interface/Github.controller';
 import { GithubRepositoryService } from './application/GithubRepository.service';
+import { GITHUB_ISSUE_REPOSITORY_TOKEN } from './domain/GithubIssueRepository.interface';
+import { GithubIssueRepository } from './infrastructure/api/GithubIssueRepository';
+import { GithubIssueService } from './application/GithubIssue.service';
 
 @Module({
   providers: [{
@@ -14,7 +17,10 @@ import { GithubRepositoryService } from './application/GithubRepository.service'
   }, {
     provide: GITHUB_REPOSITORY_REPOSITORY_TOKEN,
     useClass: GithubRepositoryRepository,
-  }, GithubRepositoryService],
+  }, {
+    provide: GITHUB_ISSUE_REPOSITORY_TOKEN,
+    useClass: GithubIssueRepository,
+  }, GithubRepositoryService, GithubIssueService],
   controllers: [GithubController],
   exports: [GIT_HUB_USER_REPOSITORY_TOKEN],
 })
