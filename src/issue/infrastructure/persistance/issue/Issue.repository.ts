@@ -24,6 +24,19 @@ export class IssueRepository implements IIssueRepository {
     return this.mapper.toDomain(issueEntity);
   }
 
+  async findByRepoFullNameAndIssueNumber(
+    repoFullName: string,
+    issueNumber: number,
+  ): Promise<Issue|null> {
+    const issueEntity = await this.ormRepository.findOne({
+      githubIssueNumber: issueNumber,
+      githubRepositoryFullName: repoFullName,
+    });
+    if (issueEntity === undefined) return null;
+
+    return this.mapper.toDomain(issueEntity);
+  }
+
   async save(issue: Issue): Promise<void> {
     const entity = this.mapper.toEntity(issue);
     await this.ormRepository.save(entity);

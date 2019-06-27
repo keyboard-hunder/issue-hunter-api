@@ -22,6 +22,6 @@ import { IssueController } from './interface/Issue.controller';
     useClass: Klaytn,
   }],
   controllers: [IssueController],
-  exports: [],
+  exports: [ISSUE_REPOSITORY_TOKEN],
 })
 export class IssueModule {}
