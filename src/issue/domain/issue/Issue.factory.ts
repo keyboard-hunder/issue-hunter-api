@@ -30,7 +30,7 @@ export class IssueFactory {
     state: string,
     category: string,
     githubIssueNumber: number,
-    githubRepositoryUrl: string,
+    githubRepositoryFullName: string,
     githubTitle: string,
     githubBody: string,
     klaytnId: number,
@@ -45,7 +45,7 @@ export class IssueFactory {
       new GithubInformation(
         id,
         githubIssueNumber,
-        githubRepositoryUrl,
+        githubRepositoryFullName,
         githubTitle,
         githubBody,
       ),

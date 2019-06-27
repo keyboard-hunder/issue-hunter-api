@@ -16,7 +16,7 @@ export class IssueEntity {
   githubIssueNumber: number;
 
   @Column()
-  githubRepositoryUrl: string;
+  githubRepositoryFullName: string;
 
   @Column()
   githubTitle: string;

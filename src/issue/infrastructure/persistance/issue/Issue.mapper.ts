@@ -16,7 +16,7 @@ export class IssueMapper {
       entity.state,
       entity.category,
       entity.githubIssueNumber,
-      entity.githubRepositoryUrl,
+      entity.githubRepositoryFullName,
       entity.githubTitle,
       entity.githubBody,
       entity.klaytnId,
@@ -33,7 +33,7 @@ export class IssueMapper {
     entity.state = plainIssue._state;
     entity.category = plainIssue._category;
     entity.githubIssueNumber = plainIssue._githubInformation._issueNumber;
-    entity.githubRepositoryUrl = plainIssue._githubInformation._repositoryUrl;
+    entity.githubRepositoryFullName = plainIssue._githubInformation._repositoryFullName;
     entity.githubTitle = plainIssue._githubInformation._title;
     entity.githubBody = plainIssue._githubInformation._body;
     entity.klaytnId = plainIssue._klaytnInformation._id;
