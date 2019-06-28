@@ -61,24 +61,24 @@ export class HookService {
     await this.issueRepository.save(issue);
 
     // get access token of issuer
-    const user = await this.userRepositry.findById(new UserId(issue.userId));
-    const accessToken = user.accessToken;
+    // const user = await this.userRepositry.findById(new UserId(issue.userId));
+    // const accessToken = user.accessToken;
 
     // comment to github issue
-    const comment = 'comment';
-    await this.githubIssueRepository.addComment(
-      repoFullName,
-      issueNumber,
-      comment,
-      accessToken,
-    );
+    // const comment = 'comment';
+    // await this.githubIssueRepository.addComment(
+    //   repoFullName,
+    //   issueNumber,
+    //   comment,
+    //   accessToken,
+    // );
 
     // closing github issue
-    await this.githubIssueRepository.closeIssue(
-      repoFullName,
-      issueNumber,
-      accessToken,
-    );
+    // await this.githubIssueRepository.closeIssue(
+    //   repoFullName,
+    //   issueNumber,
+    //   accessToken,
+    // );
   }
 
 }

@@ -75,13 +75,13 @@ export class IssueService {
     await this.issueRepository.save(newIssue);
 
     // add comment to github`s issue
-    const comment = 'comment';
-    await this.githubIssueRepository.addComment(
-      repositoryFullName,
-      issueNumber,
-      comment,
-      accessToken,
-    );
+  //   const comment = 'comment';
+  //   await this.githubIssueRepository.addComment(
+  //     repositoryFullName,
+  //     issueNumber,
+  //     comment,
+  //     accessToken,
+  //   );
   }
 
 }
