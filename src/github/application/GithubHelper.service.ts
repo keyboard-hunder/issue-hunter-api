@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class GithubHelperService {
 
   public getRepositoryUrl(fullName: string): string {
-    return `https://api.github.com/repos/${fullName}`;
+    return `https://github.com/${fullName}`;
   }
 
   public getIssueNumber(prBody: string): number|null {
