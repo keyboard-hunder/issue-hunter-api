@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository as OrmRepository } from 'typeorm';
+import { Repository as OrmRepository, In, Like } from 'typeorm';
 
 import { IIssueRepository, SearchParam } from '../../../domain/issue/IssueRepository.interface';
 import { IssueMapper } from './Issue.mapper';
@@ -40,6 +40,7 @@ export class IssueRepository implements IIssueRepository {
   async findBySearchParam(param: SearchParam): Promise<Issue[]> {
     const { page } = param;
     const issueEntities = await this.ormRepository.find({
+      where: this.getWhere(param),
       skip: (page - 1) * 30,
       take: 30,
     });
@@ -56,4 +57,20 @@ export class IssueRepository implements IIssueRepository {
     await this.ormRepository.remove(entity);
   }
 
+  private getWhere(param: SearchParam): object {
+    const { title, category } = param;
+    const categories = category.split(',');
+
+    if (title) {
+      return {
+        state: 'open',
+        githubTitle: Like(`%${title}%`),
+        category: In(categories),
+      };
+    }
+    return {
+      state: 'open',
+      category: In(categories),
+    };
+  }
 }

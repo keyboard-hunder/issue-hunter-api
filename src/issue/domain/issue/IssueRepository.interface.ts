@@ -5,6 +5,8 @@ export const ISSUE_REPOSITORY_TOKEN = 'ISSUE_REPOSITORY_TOKEN';
 
 export interface SearchParam  {
   page: number;
+  title: string;
+  category: string;
 }
 
 export interface IIssueRepository {
