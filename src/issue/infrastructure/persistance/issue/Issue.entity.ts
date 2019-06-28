@@ -22,9 +22,6 @@ export class IssueEntity {
   githubTitle: string;
 
   @Column()
-  githubBody: string;
-
-  @Column()
   klaytnId: number;
 
   @Column()

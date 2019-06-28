@@ -18,7 +18,6 @@ export class IssueMapper {
       entity.githubIssueNumber,
       entity.githubRepositoryFullName,
       entity.githubTitle,
-      entity.githubBody,
       entity.klaytnId,
       entity.klaytnPrice,
       entity.createdAt,
@@ -36,7 +35,6 @@ export class IssueMapper {
     entity.githubIssueNumber = plainIssue._githubInformation._issueNumber;
     entity.githubRepositoryFullName = plainIssue._githubInformation._repositoryFullName;
     entity.githubTitle = plainIssue._githubInformation._title;
-    entity.githubBody = plainIssue._githubInformation._body;
     entity.klaytnId = plainIssue._klaytnInformation._id;
     entity.klaytnPrice = plainIssue._klaytnInformation._price;
     entity.createdAt = plainIssue._createdAt;

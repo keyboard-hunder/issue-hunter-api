@@ -13,14 +13,12 @@ export class GithubInformation extends ValueObject<GithubInformation> {
     issueNumber: number,
     repositoryFullName: string,
     title: string,
-    body: string,
   ) {
     super();
     this._id = id;
     this._issueNumber = issueNumber;
     this._repositoryFullName = repositoryFullName;
     this._title = title;
-    this._body = body;
   }
 
   get id() {
@@ -37,10 +35,6 @@ export class GithubInformation extends ValueObject<GithubInformation> {
 
   get title() {
     return this._title;
-  }
-
-  get body() {
-    return this._body;
   }
 
 }

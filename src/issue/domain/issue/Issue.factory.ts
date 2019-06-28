@@ -34,7 +34,6 @@ export class IssueFactory {
     githubIssueNumber: number,
     githubRepositoryFullName: string,
     githubTitle: string,
-    githubBody: string,
     klaytnId: number,
     klaytnPrice: number,
     createdAt: Date,
@@ -50,7 +49,6 @@ export class IssueFactory {
         githubIssueNumber,
         githubRepositoryFullName,
         githubTitle,
-        githubBody,
       ),
       new KlaytnInformation(
         klaytnId,

@@ -64,7 +64,6 @@ export class IssueService {
         issueNumber,
         repositoryFullName,
         githubIssue.title,
-        githubIssue.body,
       ),
       new KlaytnInformation(
         newKlaytnId,
