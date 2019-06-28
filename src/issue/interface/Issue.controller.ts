@@ -35,11 +35,12 @@ export class IssueController {
 
   @Post('/github/hook/pr')
   async handlePullRequestHook(
-    @Body() handlePullRequestHookDTO: HandlePullRequestHookDTO,
+    @Body() handlePullRequestHookDTO,
   ) {
-    const pullRequest = handlePullRequestHookDTO['pull_request'];
-    const { state, merged, body, repo, user } = pullRequest;
-    const repoFullName = repo['full_name'];
+    const pullRequest = handlePullRequestHookDTO.pull_request;
+    const repository = handlePullRequestHookDTO.repository;
+    const { state, merged, body, user } = pullRequest;
+    const repoFullName = repository.full_name;
     const solvingGithubId = user.id;
 
     await this.hookService.handlePullRequestHook(
